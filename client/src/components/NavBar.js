@@ -21,6 +21,9 @@ function NavBar({ user, setUser }) {
         <Button as={Link} to="/new">
           New Court Signup
         </Button>
+        <Button as={Link} to="/about">
+          About
+        </Button>
         <Button variant="outline" onClick={handleLogoutClick}>
           Logout
         </Button>

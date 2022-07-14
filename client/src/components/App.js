@@ -3,8 +3,9 @@ import { Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Login from "../pages/Login";
 import About from "../pages/About";
-import SignUpList from "../pages/SignUpList";
+import SignUpList from "../pages/Reservations";
 import NewSignUp from "../pages/NewSignUp";
+import CourtBrowser from "../pages/CourtBrowser"
 
 function App() {
   const [user, setUser] = useState(null);
@@ -18,7 +19,7 @@ function App() {
     });
   }, []);
 
-  if (!user) return <Login onLogin={setUser} />;
+  // if (!user) return <Login onLogin={setUser} />;
 
   return (
     <>
@@ -32,7 +33,7 @@ function App() {
             <NewSignUp user={user} />
           </Route>
           <Route path="/">
-            <SignUpList />
+            <CourtBrowser />
           </Route>
         </Switch>
       </main>

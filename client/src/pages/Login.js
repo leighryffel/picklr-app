@@ -33,6 +33,7 @@ function Login({ onLogin }) {
           </p>
         </>
       )}
+      <h1>Additional Section -</h1>
     </Wrapper>
   );
 }

@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import { Button, Error, Input, FormField, Label } from "../styles";
 
 function SignUpForm({ onLogin }) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [skillLevel, setSkillLevel] = useState(0);
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,12 +18,9 @@ function SignUpForm({ onLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        first_name: firstName,
-        last_name: lastName,
         username: username,
         password: password,
-        password_confirmation: passwordConfirmation,
-        skill_level: skillLevel,
+        password_confirmation: passwordConfirmation
       }),
     }).then((r) => {
       setIsLoading(false);
@@ -41,27 +35,7 @@ function SignUpForm({ onLogin }) {
   return (
     <form onSubmit={handleSubmit}>
       <FormField>
-        <Label htmlFor="firstname">First Name</Label>
-        <Input
-          type="text"
-          id="firstname"
-          autoComplete="off"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-      </FormField>
-      <FormField>
-        <Label htmlFor="lastname">Last Name</Label>
-        <Input
-          type="text"
-          id="lastname"
-          autoComplete="off"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-      </FormField>
-      <FormField>
-        <Label htmlFor="username">Username</Label>
+        <Label htmlFor="username">Choose a Username</Label>
         <Input
           type="text"
           id="username"
@@ -71,7 +45,7 @@ function SignUpForm({ onLogin }) {
         />
       </FormField>
       <FormField>
-        <Label htmlFor="password">Password</Label>
+        <Label htmlFor="password">Choose a Password</Label>
         <Input
           type="password"
           id="password"
@@ -81,22 +55,13 @@ function SignUpForm({ onLogin }) {
         />
       </FormField>
       <FormField>
-        <Label htmlFor="password">Password Confirmation</Label>
+        <Label htmlFor="password">Confirm Password</Label>
         <Input
           type="password"
           id="password_confirmation"
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
-        />
-      </FormField>
-      <FormField>
-        <Label htmlFor="skill">Skill Level</Label>
-        <Input
-          type="number"
-          id="skill"
-          value={skillLevel}
-          onChange={(e) => setSkillLevel(e.target.value)}
         />
       </FormField>
       <FormField>

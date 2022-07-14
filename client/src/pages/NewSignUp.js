@@ -1,23 +1,12 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
-import ReactMarkdown from "react-markdown";
-import { Button, Error, FormField, Input, Label, TextArea } from "../styles";
+import { Button, Error, FormField, Input, Label } from "../styles";
 
-function NewRecipe({ user }) {
-  const [title, setTitle] = useState("My Awesome Recipe");
-  const [minutesToComplete, setMinutesToComplete] = useState("30");
-  const [instructions, setInstructions] = useState(`Here's how you make it.
-  
-## Ingredients
-
-- 1c Sugar
-- 1c Spice
-
-## Instructions
-
-**Mix** sugar and spice. _Bake_ for 30 minutes.
-  `);
+function NewSignUp({ user }) {
+  const [court, setCourt] = useState("");
+  const [date, setDate] = useState("YYYY/MM/DD");
+  const [time, setTime] = useState("12:00PM");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
@@ -25,15 +14,15 @@ function NewRecipe({ user }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch("/recipes", {
+    fetch("/signups", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        title,
-        instructions,
-        minutes_to_complete: minutesToComplete,
+        court: court,
+        date: date,
+        time: time
       }),
     }).then((r) => {
       setIsLoading(false);
@@ -48,38 +37,38 @@ function NewRecipe({ user }) {
   return (
     <Wrapper>
       <WrapperChild>
-        <h2>Create Recipe</h2>
+        <h2>Sign Up for Court Time</h2>
         <form onSubmit={handleSubmit}>
           <FormField>
-            <Label htmlFor="title">Title</Label>
+            <Label htmlFor="court">Court</Label>
+            <Input
+              type="select"
+              id="court"
+              value={court}
+              onChange={(e) => setCourt(e.target.value)}
+            />
+          </FormField>
+          <FormField>
+            <Label htmlFor="date">Date</Label>
             <Input
               type="text"
-              id="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              id="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
             />
           </FormField>
           <FormField>
-            <Label htmlFor="minutesToComplete">Minutes to complete</Label>
+            <Label htmlFor="time">Time</Label>
             <Input
-              type="number"
-              id="minutesToComplete"
-              value={minutesToComplete}
-              onChange={(e) => setMinutesToComplete(e.target.value)}
-            />
-          </FormField>
-          <FormField>
-            <Label htmlFor="instructions">Instructions</Label>
-            <TextArea
-              id="instructions"
-              rows="10"
-              value={instructions}
-              onChange={(e) => setInstructions(e.target.value)}
+              type="text"
+              id="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
             />
           </FormField>
           <FormField>
             <Button color="primary" type="submit">
-              {isLoading ? "Loading..." : "Submit Recipe"}
+              {isLoading ? "Loading..." : "Reserve Court"}
             </Button>
           </FormField>
           <FormField>
@@ -90,13 +79,10 @@ function NewRecipe({ user }) {
         </form>
       </WrapperChild>
       <WrapperChild>
-        <h1>{title}</h1>
+        <h1>You're Booked to play at {court}!</h1>
         <p>
-          <em>Time to Complete: {minutesToComplete} minutes</em>
-          &nbsp;·&nbsp;
-          <cite>By {user.username}</cite>
+          <em>See you on {date} at {time}. </em>
         </p>
-        <ReactMarkdown>{instructions}</ReactMarkdown>
       </WrapperChild>
     </Wrapper>
   );
@@ -114,4 +100,4 @@ const WrapperChild = styled.div`
   flex: 1;
 `;
 
-export default NewRecipe;
+export default NewSignUp;
