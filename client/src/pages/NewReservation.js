@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { Button, Error, FormField, Input, Label } from "../styles";
 
-function NewReservation({ user, chosenCourt }) {
+function NewReservation({ user, chosenCourt, change, setChange }) {
   const [courtId, setCourtId] = useState(chosenCourt);
   const [date, setDate] = useState("DD/MM/YYYY");
   const [time, setTime] = useState("12:00PM");
@@ -23,10 +23,12 @@ function NewReservation({ user, chosenCourt }) {
         court_id: courtId,
         date: date,
         time: time,
+        user_id: user.id,
       }),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
+        console.log("This worked").then(() => setChange(!change))
         history.push("/");
       } else {
         r.json().then((err) => setErrors(err.errors));

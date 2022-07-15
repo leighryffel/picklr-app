@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: @current_user
+    render json: User.find(session[:user_id])
   end
 
   private

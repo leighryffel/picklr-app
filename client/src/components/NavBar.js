@@ -15,7 +15,7 @@ function NavBar({ user, setUser }) {
   return (
     <Wrapper>
       <Logo>
-        <Link to="/">🏓 {user.username.charAt(0).toUpperCase()+user.username.slice(1)}'s Picklr 🏓</Link>
+        <Link to="/">🏓 Picklr 🏓</Link>
       </Logo>
       <Nav>
         <Button as={Link} to="/about">
@@ -43,16 +43,18 @@ const Wrapper = styled.header`
 `;
 
 const Logo = styled.h1`
-  font-size: 2rem;
+  font-size: 3rem;
   color: green;
   margin: 0;
   line-height: 1;
+  text-align: center;
 
   a {
     color: inherit;
     text-decoration: none;
   }
 `;
+
 
 const Nav = styled.nav`
   display: flex;

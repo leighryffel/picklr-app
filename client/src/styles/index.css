@@ -5,9 +5,31 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(199, 228, 199);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.court-image {
+  width: 15rem;
+}
+
+.court-card {
+  border-radius: 1rem;
+  border-color:black;
+  padding: 1rem;
+  width: 25%;
+  display: inline-block;
+}
+
+.video {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-header {
+  text-align: center;
 }

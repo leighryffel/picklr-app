@@ -4,14 +4,12 @@ import ReactPlayer from "react-player";
 function About() {
   return (
     <div>
-      <h1>All About Pickleball</h1>
+      <h1 className="about-header">All About Pickleball</h1>
       <ReactPlayer
-        url={"https://www.youtube.com/watch?v=ek3DCa_sZX8"}
+        className="video"
+        url={"https://www.youtube.com/watch?v=ek3DCa_sZX8&t=25s"}
         playing={false}
         alt="pickleball"
-        align="center"
-        // width={props.width}
-        // height={props.height}
       />
       <h2>What is Pickleball?</h2>
       <p>

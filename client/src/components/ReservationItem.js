@@ -13,7 +13,7 @@ function ReservationItem({ reservation, user, change, setChange }) {
     <div>
       <Box>
         <h2>
-          {user.username.charAt(0).toUpperCase() + user.username.slice(1)},
+          {reservation.user.username.charAt(0).toUpperCase() + reservation.user.username.slice(1)},
           you're signed up!
         </h2>
         <p>

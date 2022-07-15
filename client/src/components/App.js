@@ -11,6 +11,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [chosenCourt, setChosenCourt] = useState("");
   const history = useHistory();
+  const [change, setChange] = useState(false);
 
   useEffect(() => {
     // auto-login
@@ -48,10 +49,12 @@ function App() {
               user={user}
               chosenCourt={chosenCourt}
               setChosenCourt={setChosenCourt}
+              change={change}
+              setChange={setChange}
             />
           </Route>
           <Route path="/">
-            <Reservations user={user} />
+            <Reservations user={user} change={change} setChange={setChange} />
           </Route>
         </Switch>
       </main>

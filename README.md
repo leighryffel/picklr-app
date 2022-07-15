@@ -5,13 +5,13 @@ Pickleball is the hot new racket sport that _everyone_ is talking about. In NYC,
 ## Deliverables and Stretch Goals
 - **MVP**: As a user, I can:
   - Log into the site
-  - View a list of all courts that have signup slots open (**READ** /courts)
-  - View a list of all of my signups (**READ** /signups)
-  - Signup to use a court at a specific date and time (**CREATE** /signups/:id)
-  - Modify the date and time of my signup (**UPDATE** /signups/:id)
-  - Cancel a signup (**DELETE** /signups/:id)
+  - View a list of all courts (**READ** /courts)
+  - View a list of all of my reservations (**READ** /reservations)
+  - Reserve a court at a specific date and time (**CREATE** /reservations/:id)
+  - Modify the date and time of my reservation (**UPDATE** /reservations/:id)
+  - Cancel a reservation (**DELETE** /reservations/:id)
 - **Stretch**: As a user, I can:
-  - Only have five active signups at a time
+  - Only have five active reservations at a time
   - Only signup with a partner who has the same skill level as I do
   - View pickleball courts on a map
 
@@ -21,8 +21,8 @@ Pickleball is the hot new racket sport that _everyone_ is talking about. In NYC,
 ## Routes
 
 * https://picklr-app.herokuapp.com/home
-* https://picklr-app.herokuapp.com/about
-* https://picklr-app.herokuapp.com/signups
+* https://picklr-app.herokuapp.com/new
+* https://picklr-app.herokuapp.com/view
 
 ## Instructions for Testing/Updating Production
 

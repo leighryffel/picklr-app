@@ -4,9 +4,8 @@ import styled from "styled-components";
 import { Button } from "../styles";
 import ReservationItem from "../components/ReservationItem";
 
-function Reservations({ user }) {
-const [reservations, setReservations] = useState([]);
-const [change, setChange] = useState(false);
+function Reservations({ user, change, setChange }) {
+  const [reservations, setReservations] = useState([]);
 
   useEffect(() => {
     fetch("/reservations")
@@ -14,26 +13,20 @@ const [change, setChange] = useState(false);
       .then(setReservations);
   }, [change]);
 
-
-  function handleDeleteReservation(deletedReservation) {
-    setReservations((reservations) =>
-      reservations.filter(
-        (reservation) => reservation.id !== deletedReservation.id
-      )
-    );
-  }
+  const filteredRes = reservations.filter(
+    (reservation) => reservation.user.username === user.username
+  );
 
   return (
     <Wrapper>
-      {reservations.length > 0 ? (
+      {filteredRes.length > 0 ? (
         <>
           <h1>Upcoming Reservations</h1>
-          {reservations.map((reservation) => (
+          {filteredRes.map((reservation) => (
             <ReservationItem
               key={reservation.id}
               reservation={reservation}
               user={user}
-              onDeleteReservation={handleDeleteReservation}
               change={change}
               setChange={setChange}
             />
@@ -41,8 +34,8 @@ const [change, setChange] = useState(false);
         </>
       ) : (
         <>
-          <h2>No Reservations Found</h2>
-          <Button as={Link} to="/home">
+          <h3>No Reservations Found</h3>
+          <Button as={Link} to="/new">
             Reserve a Court Time
           </Button>
         </>

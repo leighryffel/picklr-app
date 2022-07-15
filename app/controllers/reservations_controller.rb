@@ -1,13 +1,15 @@
 
 class ReservationsController < ApplicationController
   
+  skip_before_action :authorize
+  
   def index
     reservations = Reservation.all 
     render json: reservations
   end
 
   def show
-    reservation = Reservation.find_by(user_id: params[:user_id])
+    reservation = Reservation.find_by(params[:user_id])
     if reservation
       render json: reservation, status: :ok
     else
@@ -16,7 +18,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    reservation = @current_user.reservations.create!(reservation_params)
+    reservation = Reservation.create!(reservation_params)
     render json: reservation, status: :created
   end
 
@@ -29,7 +31,7 @@ class ReservationsController < ApplicationController
   private
   
   def reservation_params
-    params.permit(:time, :date, :court_id)
+    params.permit(:time, :date, :court_id, :user_id)
   end
   
 end
