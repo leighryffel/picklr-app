@@ -15,14 +15,17 @@ function NavBar({ user, setUser }) {
   return (
     <Wrapper>
       <Logo>
-        <Link to="/">🏓 Picklr 🏓</Link>
+        <Link to="/">🏓 {user.username.charAt(0).toUpperCase()+user.username.slice(1)}'s Picklr 🏓</Link>
       </Logo>
       <Nav>
-        <Button as={Link} to="/new">
-          New Court Signup
-        </Button>
         <Button as={Link} to="/about">
           About
+        </Button>
+        <Button as={Link} to="/courts">
+          View Courts
+        </Button>
+        <Button as={Link} to="/new">
+          New Reservation
         </Button>
         <Button variant="outline" onClick={handleLogoutClick}>
           Logout
@@ -40,9 +43,8 @@ const Wrapper = styled.header`
 `;
 
 const Logo = styled.h1`
-  // font-family: "Permanent Marker", cursive;
-  font-size: 3rem;
-  color: red;
+  font-size: 2rem;
+  color: green;
   margin: 0;
   line-height: 1;
 

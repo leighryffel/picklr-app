@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { Button, Error, FormField, Input, Label } from "../styles";
 
-function NewSignUp({ user }) {
-  const [court, setCourt] = useState("");
-  const [date, setDate] = useState("YYYY/MM/DD");
+function NewReservation({ user, chosenCourt }) {
+  const [courtId, setCourtId] = useState(chosenCourt);
+  const [date, setDate] = useState("DD/MM/YYYY");
   const [time, setTime] = useState("12:00PM");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -14,15 +14,15 @@ function NewSignUp({ user }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch("/signups", {
+    fetch("/reservations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        court: court,
+        court_id: courtId,
         date: date,
-        time: time
+        time: time,
       }),
     }).then((r) => {
       setIsLoading(false);
@@ -37,15 +37,15 @@ function NewSignUp({ user }) {
   return (
     <Wrapper>
       <WrapperChild>
-        <h2>Sign Up for Court Time</h2>
+        <h2>Reserve Court Time</h2>
         <form onSubmit={handleSubmit}>
           <FormField>
-            <Label htmlFor="court">Court</Label>
+            <Label htmlFor="court">Court Number (1-6)</Label>
             <Input
               type="select"
               id="court"
-              value={court}
-              onChange={(e) => setCourt(e.target.value)}
+              value={courtId}
+              onChange={(e) => setCourtId(parseInt(e.target.value))}
             />
           </FormField>
           <FormField>
@@ -78,12 +78,6 @@ function NewSignUp({ user }) {
           </FormField>
         </form>
       </WrapperChild>
-      <WrapperChild>
-        <h1>You're Booked to play at {court}!</h1>
-        <p>
-          <em>See you on {date} at {time}. </em>
-        </p>
-      </WrapperChild>
     </Wrapper>
   );
 }
@@ -100,4 +94,4 @@ const WrapperChild = styled.div`
   flex: 1;
 `;
 
-export default NewSignUp;
+export default NewReservation;

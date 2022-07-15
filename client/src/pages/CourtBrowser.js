@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { Button, Card } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button, Card, CardGroup } from "react-bootstrap";
 
-function CourtBrowser() {
+function CourtBrowser({ navigateToReservations }) {
   const [courts, setCourts] = useState([]);
 
   useEffect(() => {
@@ -12,23 +11,27 @@ function CourtBrowser() {
   }, []);
 
   const courtList = courts.map((court) => (
-    <>
-      <Card style={{ width: "30rem", padding: "5rem" }} key={court.id}>
-        <Card.Body>
-          <Card.Img style={{ width: "30rem" }} src={court.image_url} />
-          <Card.Title>{court.name} Pickleball Courts</Card.Title>
-          Location: {court.location}
-          <p></p>
-          <Button>Reserve Time</Button>
-        </Card.Body>
-      </Card>
-    </>
+    <Card style={{ width: "40rem", padding: "5rem" }} key={court.id}>
+      <Card.Img
+        variant="top"
+        style={{ width: "40rem" }}
+        src={court.image_url}
+      />
+      <Card.Body>
+        <Card.Title>
+          {court.name} Pickleball Courts
+        </Card.Title>
+        Location: {court.location}
+        <p>Court #: {court.id}</p>
+        <Button variant="outline-success" onClick={navigateToReservations}>Reserve Time</Button>
+      </Card.Body>
+    </Card>
   ));
 
   return (
     <div>
       <h1>View All Courts</h1>
-      {courtList}
+      <CardGroup>{courtList}</CardGroup>
     </div>
   );
 }

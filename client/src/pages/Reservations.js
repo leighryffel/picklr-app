@@ -1,44 +1,52 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Box, Button } from "../styles";
+import { Button } from "../styles";
+import ReservationItem from "../components/ReservationItem";
 
-function Reservations() {
-  const [reservations, setReservations] = useState([]);
+function Reservations({ user }) {
+const [reservations, setReservations] = useState([]);
+const [change, setChange] = useState(false);
 
   useEffect(() => {
     fetch("/reservations")
       .then((r) => r.json())
       .then(setReservations);
-  }, []);
+  }, [change]);
+
+
+  function handleDeleteReservation(deletedReservation) {
+    setReservations((reservations) =>
+      reservations.filter(
+        (reservation) => reservation.id !== deletedReservation.id
+      )
+    );
+  }
 
   return (
     <Wrapper>
-      <p>RESERVATIONS WILL GO HERE</p>
-      {/* {signups.length > 0 ? (
+      {reservations.length > 0 ? (
         <>
-        <h1>Upcoming Reservations</h1>
-        {signups.map((signup) => (
-            <div key={signup.id}>
-              <Box>
-                <h2>You're signed up!</h2>
-                <p>
-                  <em>
-                    Playing at: {signup.time} on {signup.date}
-                  </em>
-                </p>
-              </Box>
-            </div>
+          <h1>Upcoming Reservations</h1>
+          {reservations.map((reservation) => (
+            <ReservationItem
+              key={reservation.id}
+              reservation={reservation}
+              user={user}
+              onDeleteReservation={handleDeleteReservation}
+              change={change}
+              setChange={setChange}
+            />
           ))}
-          </>
+        </>
       ) : (
         <>
-          <h2>No Signups Found</h2>
-          <Button as={Link} to="/new">
+          <h2>No Reservations Found</h2>
+          <Button as={Link} to="/home">
             Reserve a Court Time
           </Button>
         </>
-      )} */}
+      )}
     </Wrapper>
   );
 }
@@ -46,10 +54,6 @@ function Reservations() {
 const Wrapper = styled.section`
   max-width: 800px;
   margin: 40px auto;
-`;
-
-const CourtDiv = styled.article`
-  margin-bottom: 24px;
 `;
 
 export default Reservations;

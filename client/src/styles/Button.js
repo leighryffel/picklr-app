@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 const COLORS = {
   primary: {
-    "--main": "red",
+    "--main": "green",
     "--accent": "white",
   },
   secondary: {
-    "--main": "pink",
-    "--accent": "red",
+    "--main": "lightgreen",
+    "--accent": "black",
   },
 };
 
