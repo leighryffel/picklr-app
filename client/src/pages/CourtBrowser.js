@@ -11,18 +11,18 @@ function CourtBrowser({ navigateToReservations }) {
   }, []);
 
   const courtList = courts.map((court) => (
-      <Card className="court-card" key={court.id}>
-        <Card.Img className="court-image" src={court.image_url} />
-        <Card.Body>
-          <Card.Title>{court.name} Pickleball Courts</Card.Title>
-          Location: {court.location}
-          <p>Court #: </p>
-          <p>{court.id}</p>
-          <Button variant="outline-success" onClick={navigateToReservations}>
-            Reserve Time
-          </Button>
-        </Card.Body>
-      </Card>
+    <Card className="court-card" key={court.id}>
+      <Card.Img className="court-image" src={court.image_url} />
+      <Card.Body>
+        <Card.Title>{court.name} Pickleball Courts</Card.Title>
+        <h4>Location: {court.location}</h4>
+        <h4>Court Number: {court.id}</h4>
+        <Button variant="outline-success" onClick={navigateToReservations}>
+          Reserve Time
+        </Button>
+        <p className="hidden">{court.id}</p>
+      </Card.Body>
+    </Card>
   ));
 
   return (

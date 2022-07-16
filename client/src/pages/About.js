@@ -3,7 +3,7 @@ import ReactPlayer from "react-player";
 
 function About() {
   return (
-    <div>
+    <div className= "about-div">
       <h1 className="about-header">All About Pickleball</h1>
       <ReactPlayer
         className="video"

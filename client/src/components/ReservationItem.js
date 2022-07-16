@@ -21,7 +21,6 @@ function ReservationItem({ reservation, user, change, setChange }) {
         </p>
         <img alt="court" width="300px" src={reservation.court.image_url} />
         <hr></hr>
-        <button>Modify Reservation</button> <p></p>
         <button onClick={onDeleteReservation}>Cancel Reservation</button>
       </Box>
     </div>

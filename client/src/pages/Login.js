@@ -8,7 +8,7 @@ function Login({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
-    <Wrapper>
+    <Wrapper className="login-page">
       <Logo className="header">
         <img
           src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/emojipedia/62/cucumber_1f952.png"

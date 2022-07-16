@@ -23,7 +23,7 @@ function App() {
   }, []);
 
   function navigateToReservations(e) {
-    setChosenCourt(parseInt(e.target.previousSibling.innerHTML));
+    setChosenCourt(parseInt(e.target.nextSibling.innerHTML));
     history.push("/new");
   }
 

@@ -33,3 +33,16 @@ code {
 .about-header {
   text-align: center;
 }
+
+.about-div {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.hidden {
+  color: rgb(199, 228, 199);
+}
+
+.login-page {
+background-image: linear-gradient(to bottom right, rgb(118, 224, 176), rgb(45, 158, 7));
+}
