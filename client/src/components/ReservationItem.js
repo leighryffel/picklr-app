@@ -4,7 +4,7 @@ function ReservationItem({ reservation, user, change, setChange }) {
   const { id, time, date } = reservation;
 
   function onDeleteReservation() {
-    fetch(`/reservations/${id}`, {
+    fetch(`/reservations/${reservation.id}`, {
       method: "DELETE",
     }).then(() => setChange(!change));
   }

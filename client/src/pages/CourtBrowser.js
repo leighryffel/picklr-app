@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Container, Row, Col } from "react-bootstrap";
+import { Button, Card, Container, Row } from "react-bootstrap";
 
 function CourtBrowser({ navigateToReservations }) {
   const [courts, setCourts] = useState([]);

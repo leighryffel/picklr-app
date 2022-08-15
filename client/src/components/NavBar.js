@@ -55,7 +55,6 @@ const Logo = styled.h1`
   }
 `;
 
-
 const Nav = styled.nav`
   display: flex;
   gap: 4px;
