@@ -1,19 +1,16 @@
 # 🏓 Phase 4 Project: Picklr 🏓
 
-## App Story
+## Watch the [Demo Video](https://www.loom.com/share/cfea14b136d040e4a323bf60513e4127)
+
 Pickleball is the hot new racket sport that _everyone_ is talking about. In NYC, it can be hard to find available court space and book time to play. This app is designed to make reserving a pickleball court easy and fun. Picklr makes it faster than ever for novice and pro Picklers alike to sign up for court time, meet other athletes in the five boroughs, and play some Pickle!
-## Deliverables and Stretch Goals
-- **MVP**: As a user, I can:
+## Key Deliverables
+- As a user, I can:
   - Log into the site
   - View a list of all courts (**READ** /courts)
   - View a list of all of my reservations (**READ** /reservations)
   - Reserve a court at a specific date and time (**CREATE** /reservations/:id)
   - Modify the date and time of my reservation (**UPDATE** /reservations/:id)
   - Cancel a reservation (**DELETE** /reservations/:id)
-- **Stretch**: As a user, I can:
-  - Only have five active reservations at a time
-  - Only signup with a partner who has the same skill level as I do
-  - View pickleball courts on a map
 
 ## Models and Relationships
 ![db diagram](public/dbdiagram.png)
